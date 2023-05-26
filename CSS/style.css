@@ -265,7 +265,7 @@ section {
   content: "";
   position: absolute;
   inset: 0 0 0 0;
-  background:linear-gradient(
+  background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0)
@@ -360,12 +360,25 @@ section {
   font-weight: var(--fw-300);
 }
 
+.article-preview a:hover,
+.article-preview a:focus {
+  color: inherit;
+}
+
 .article-preview a::before {
+  --offset: -1em;
   content: "";
   position: absolute;
-  inset: 0;
-  background: pink;
+  inset: var(--offset);
   z-index: -1;
+  border-radius: var(--br);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.article-preview:hover a::before {
+  opacity: 1;
 }
 
 .article-preview h3 {
@@ -380,6 +393,7 @@ section {
 
 .article-preview .info {
   display: flex;
+  margin-top: var(--flow-spacer, 1em);
   font-weight: var(--fw-400);
   font-size: var(--fs-200);
   color: var(--clr-neutral-400);
